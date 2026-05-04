@@ -1,4 +1,4 @@
-import sys 
+import sys
 import os
 import yaml
 import flask
@@ -12,7 +12,7 @@ def index():
     url = flask.request.args.get("url")
     return fetch_website(version, url)
 
-        
+
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
 class Person(object):
     def __init__(self, name):
@@ -20,6 +20,7 @@ class Person(object):
 
 
 def print_nametag(format_string, person):
+    """TeeHee"""
     print(format_string.format(person=person))
 
 
@@ -28,8 +29,8 @@ def fetch_website(urllib_version, url):
     # Import the requested version (2 or 3) of urllib
     exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
- 
-    try: 
+
+    try:
         http = urllib.PoolManager()
         r = http.request('GET', url)
     except:
@@ -40,9 +41,9 @@ def load_yaml(filename):
     stream = open(filename)
     deserialized_data = yaml.load(stream, Loader=yaml.Loader) #deserializing data
     return deserialized_data
-    
+
 def authenticate(password):
-    # Assert that the password is correct
+    """ Assert that the password is correct"""
     assert password == "Iloveyou", "Invalid password!"
     print("Successfully authenticated!")
 
@@ -65,4 +66,3 @@ if __name__ == '__main__':
     elif choice == "4":
         password = input("Enter master password: ")
         authenticate(password)
-
